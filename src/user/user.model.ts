@@ -1,15 +1,13 @@
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
-import { Post } from '../posts/posts.model';
 
 interface UserCreationAttrs {
   email: string;
   password: string;
 }
-
 @Table({ tableName: 'users' })
 export class User extends Model<User, UserCreationAttrs> {
-  @ApiProperty({ example: '1', description: 'Unique identificator' })
+  @ApiProperty({ example: '12345', description: 'Unique identificator' })
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -23,6 +21,4 @@ export class User extends Model<User, UserCreationAttrs> {
   @ApiProperty({ example: '12345', description: 'Password' })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
-  @HasMany(() => Post)
-  posts: Post[];
 }

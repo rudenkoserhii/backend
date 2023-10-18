@@ -11,7 +11,6 @@ async function start() {
     .setTitle('Zenbit.tech test')
     .setDescription('Zenbit.tech test')
     .setVersion('1.0.0')
-    .addTag('')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api/docs', app, document);
