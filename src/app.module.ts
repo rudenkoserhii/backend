@@ -25,11 +25,11 @@ import * as path from 'path';
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: process.env.POSTGRES_HOST,
-      port: Number(process.env.POSTGRESS_PORT),
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRESS_PASSWORD,
-      database: process.env.POSTGRES_DB,
+      host: 'localhost', //process.env.POSTGRES_HOST
+      port: 5432, //Number(process.env.POSTGRESS_PORT),
+      username: 'postgres', //process.env.POSTGRES_USER//,
+      password: 'root', //process.env.POSTGRESS_PASSWORD,
+      database: 'test_zenbit', //process.env.POSTGRES_DB,
       models: [User, Role, UserRoles, Post],
       autoLoadModels: true,
     }),
