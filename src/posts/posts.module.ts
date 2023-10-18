@@ -8,6 +8,6 @@ import { Post } from './posts.model';
 @Module({
   providers: [PostsService],
   controllers: [PostsController],
-  imports: [SequelizeModule.forFeature([User, Post]), FilesModule],
+  imports: [SequelizeModule.forFeature([User, Post])],
 })
 export class PostsModule {}

@@ -1,26 +1,12 @@
-import {
-  BelongsTo,
-  BelongsToMany,
-  Column,
-  DataType,
-  ForeignKey,
-  Model,
-  Table,
-} from 'sequelize-typescript';
-import { ApiProperty } from '@nestjs/swagger';
-import { Role } from '../roles/roles.model';
-import { UserRoles } from '../roles/user-roles.model';
-import { User } from '../users/users.model';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
-interface PostCreationAttrs {
+interface PostAttrs {
   title: string;
-  content: string;
-  userId: number;
   image: string;
 }
 
 @Table({ tableName: 'posts' })
-export class Post extends Model<Post, PostCreationAttrs> {
+export class Post extends Model<Post, PostAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -32,16 +18,6 @@ export class Post extends Model<Post, PostCreationAttrs> {
   @Column({ type: DataType.STRING, unique: true, allowNull: false })
   title: string;
 
-  @Column({ type: DataType.STRING, allowNull: false })
-  content: string;
-
   @Column({ type: DataType.STRING })
   image: string;
-
-  @ForeignKey(() => User)
-  @Column({ type: DataType.INTEGER })
-  userId: number;
-
-  @BelongsTo(() => User)
-  author: User;
 }
