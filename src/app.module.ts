@@ -31,7 +31,6 @@ import * as path from 'path';
       database: process.env.POSTGRES_DB || 'test_zenbit',
       models: [User, Post],
       autoLoadModels: true,
-      ssl: true,
     }),
     UserModule,
     AuthModule,
