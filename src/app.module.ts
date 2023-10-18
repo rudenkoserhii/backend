@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
-import { User } from './users/users.model';
-import { RolesModule } from './roles/roles.module';
-import { Role } from './roles/roles.model';
-import { UserRoles } from './roles/user-roles.model';
+import { User } from './user/user.model';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/posts.model';
-import { FilesModule } from './files/files.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 
@@ -30,14 +26,12 @@ import * as path from 'path';
       username: 'postgres', //process.env.POSTGRES_USER//,
       password: 'root', //process.env.POSTGRESS_PASSWORD,
       database: 'test_zenbit', //process.env.POSTGRES_DB,
-      models: [User, Role, UserRoles, Post],
+      models: [User, Post],
       autoLoadModels: true,
     }),
-    UsersModule,
-    RolesModule,
+    UserModule,
     AuthModule,
     PostsModule,
-    FilesModule,
   ],
 })
 export class AppModule {}

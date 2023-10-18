@@ -11,3 +11,6 @@ export class CreateUserDto {
   @Length(4, 16, { message: 'More than 4 & Less than 16' })
   readonly password: string;
 }
+Object.defineProperty(CreateUserDto, 'name', {
+  value: 'User logining',
+});
