@@ -21,6 +21,9 @@ import * as path from 'path';
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
+      dialectOptions: {
+        ssl: true,
+      },
       host: process.env.POSTGRES_HOST || 'localhost',
       port: Number(process.env.POSTGRESS_PORT) || 5432,
       username: process.env.POSTGRES_USER || 'postgres',
@@ -28,6 +31,7 @@ import * as path from 'path';
       database: process.env.POSTGRES_DB || 'test_zenbit',
       models: [User, Post],
       autoLoadModels: true,
+      ssl: true,
     }),
     UserModule,
     AuthModule,
