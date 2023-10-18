@@ -7,6 +7,12 @@ async function start() {
   const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule, { cors: false });
 
+  app.enableCors({
+    allowedHeaders: ['content-type'],
+    origin: 'http://localhost:3000',
+    credentials: true,
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Zenbit.tech test')
     .setDescription('Zenbit.tech test')
