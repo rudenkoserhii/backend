@@ -27,4 +27,24 @@ export class Post extends Model<PostAttrs> {
   })
   @Column({ type: DataType.STRING })
   image: string;
+
+  @ApiProperty({ example: 'ticket', description: 'ticket' })
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  ticket: number;
+
+  @ApiProperty({ example: 'days', description: 'days' })
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  days: number;
+
+  @ApiProperty({ example: 'price', description: 'price' })
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  price: number;
+
+  @ApiProperty({ example: 'sold', description: 'sold' })
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  sold: number;
+
+  @ApiProperty({ example: 'yeild', description: 'yeild' })
+  @Column({ type: DataType.NUMBER, allowNull: false })
+  yeild: number;
 }
