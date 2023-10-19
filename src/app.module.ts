@@ -6,8 +6,6 @@ import { User } from './user/user.model';
 import { AuthModule } from './auth/auth.module';
 import { PostsModule } from './posts/posts.module';
 import { Post } from './posts/posts.model';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import * as path from 'path';
 
 @Module({
   controllers: [],
@@ -15,9 +13,6 @@ import * as path from 'path';
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: path.resolve(__dirname),
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
@@ -31,6 +26,13 @@ import * as path from 'path';
       database: process.env.POSTGRES_DB || 'test_zenbit',
       models: [User, Post],
       autoLoadModels: true,
+      // host: 'localhost',
+      // port: 5432,
+      // username: 'postgres',
+      // password: 'root',
+      // database: 'test_zenbit',
+      // models: [User, Post],
+      // autoLoadModels: true,
     }),
     UserModule,
     AuthModule,
