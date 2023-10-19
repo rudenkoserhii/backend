@@ -10,7 +10,6 @@
   },
   "scripts": {
     "build": "nest build",
-    // "postbuild": "html-minifier dist/static/index.html",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "prestart:prod": "rimraf dist && npm run build",
     "start": "nest start",
