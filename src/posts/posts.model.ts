@@ -2,8 +2,14 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 
 interface PostAttrs {
+  id: number;
   title: string;
   image: string;
+  ticket: string;
+  days: string;
+  price: string;
+  sold: string;
+  yeild: string;
 }
 
 @Table({ tableName: 'posts' })
