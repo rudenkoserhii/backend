@@ -18,10 +18,10 @@ import { Dialect } from 'sequelize';
     SequelizeModule.forRoot({
       dialect: <Dialect>'postgres',
       protocol: 'postgres',
-      ssl: Boolean(process.env.SSL),
-      // dialectOptions: {
-      //   ssl: false,
-      // },
+      // ssl: Boolean(process.env.SSL),
+      dialectOptions: {
+        ssl: Boolean(process.env.SSL) ? true : false,
+      },
       host: process.env.POSTGRES_HOST,
       port: Number(process.env.POSTGRESS_PORT),
       username: process.env.POSTGRES_USER,
