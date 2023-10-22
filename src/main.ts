@@ -8,8 +8,7 @@ async function start() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
   app.enableCors({
-    // allowedHeaders: ['content-type'],
-    origin: 'http://localhost:3000',
+    origin: true,
     credentials: true,
   });
 
