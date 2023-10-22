@@ -9,7 +9,7 @@ interface PostAttrs {
   days: string;
   price: string;
   sold: string;
-  yeild: string;
+  yeld: string;
 }
 
 @Table({ tableName: 'posts' })
