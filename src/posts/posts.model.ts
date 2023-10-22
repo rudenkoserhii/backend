@@ -50,7 +50,7 @@ export class Post extends Model<PostAttrs> {
   @Column({ type: DataType.NUMBER, allowNull: false })
   sold: number;
 
-  @ApiProperty({ example: 'yeild', description: 'yeild' })
+  @ApiProperty({ example: 'yeld', description: 'yeld' })
   @Column({ type: DataType.NUMBER, allowNull: false })
-  yeild: number;
+  yeld: number;
 }
