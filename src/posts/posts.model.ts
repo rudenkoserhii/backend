@@ -5,11 +5,11 @@ interface PostAttrs {
   id: number;
   title: string;
   image: string;
-  ticket: string;
-  days: string;
-  price: string;
-  sold: string;
-  yeld: string;
+  ticket: number;
+  days: number;
+  price: number;
+  sold: number;
+  yeld: number;
 }
 
 @Table({ tableName: 'posts' })
