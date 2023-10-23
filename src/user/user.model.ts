@@ -21,4 +21,7 @@ export class User extends Model<User, UserCreationAttrs> {
   @ApiProperty({ example: '12345', description: 'Password' })
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
+  @ApiProperty({ example: 'refreshToken', description: 'refreshToken' })
+  @Column({ type: DataType.STRING, allowNull: true })
+  refreshToken?: any;
 }

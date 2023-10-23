@@ -10,6 +10,7 @@ export class CreateUserDto {
   @IsString({ message: 'Must be a number' })
   @Length(4, 16, { message: 'More than 4 & Less than 16' })
   readonly password: string;
+  readonly refreshToken?: any;
 }
 Object.defineProperty(CreateUserDto, 'name', {
   value: 'User Create',
