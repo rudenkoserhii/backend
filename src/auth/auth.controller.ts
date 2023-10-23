@@ -1,4 +1,5 @@
-import { Body, Controller, Post, Get, Request } from '@nestjs/common';
+import { Body, Controller, Post, Get, Req } from '@nestjs/common';
+import { Request } from 'express';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from '../user/dto/create-user.dto';
 import { AuthService } from './auth.service';
@@ -10,23 +11,25 @@ import { AuthDto } from './dto/auth.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @ApiOperation({ summary: 'Get user' })
-  @ApiResponse({ status: 200, type: [User] })
-  @Post('login')
-  login(@Body() data: AuthDto) {
-    return this.authService.login(data);
-  }
   @ApiOperation({ summary: 'Create user' })
   @ApiResponse({ status: 201, type: [User] })
   @Post('signup')
   registration(@Body() userDto: CreateUserDto) {
     return this.authService.registration(userDto);
   }
+  @ApiOperation({ summary: 'Get user' })
+  @ApiResponse({ status: 200, type: [User] })
+  @Post('login')
+  login(@Body() data: AuthDto) {
+    return this.authService.login(data);
+  }
   @ApiOperation({ summary: 'Logout user' })
   @ApiResponse({ status: 200 })
   @Get('logout')
-  logout(@Request() req: any) {
-    req.session.destroy();
+  logout(@Req() req: Request) {
+    req.session.destroy(function () {
+      delete req.session;
+    });
     return { msg: 'The user session has ended' };
   }
 }
