@@ -9,7 +9,7 @@ interface PostAttrs {
   days: number;
   price: number;
   sold: number;
-  yeld: number;
+  yeld: string;
 }
 
 @Table({ tableName: 'posts' })
@@ -51,6 +51,6 @@ export class Post extends Model<PostAttrs> {
   sold: number;
 
   @ApiProperty({ example: 'yeld', description: 'yeld' })
-  @Column({ type: DataType.NUMBER, allowNull: false })
-  yeld: number;
+  @Column({ type: DataType.STRING, allowNull: false })
+  yeld: string;
 }
