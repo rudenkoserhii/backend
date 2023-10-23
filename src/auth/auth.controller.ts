@@ -23,6 +23,12 @@ export class AuthController {
   login(@Body() data: AuthDto) {
     return this.authService.login(data);
   }
+  @ApiOperation({ summary: 'Forgot password' })
+  @ApiResponse({ status: 200, type: [User] })
+  @Post('forgot')
+  forgot(@Body() userDto: CreateUserDto) {
+    return this.authService.forgot(userDto);
+  }
   @ApiOperation({ summary: 'Logout user' })
   @ApiResponse({ status: 200 })
   @Get('logout')

@@ -39,6 +39,19 @@ export class AuthService {
     return this.generateToken(user);
   }
 
+  async forgot(userDto: CreateUserDto) {
+    const candidate = await this.userService.getUserByEmail(userDto.email);
+    if (!candidate) {
+      throw new HttpException(
+        'No user with such e-mail',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    const hashPassword = await bcrypt.hash(userDto.password, 5);
+    const user = await this.userService.updateUser(userDto.email, hashPassword);
+    return this.generateToken(user);
+  }
+
   private async generateToken(user: User) {
     const payload = { email: user.email, id: user.id };
     return {
